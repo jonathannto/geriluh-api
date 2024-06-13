@@ -1,0 +1,21 @@
+CREATE TABLE TB_USUARIO (
+    id_usu INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificador único do usuário, chave primária',
+    nom_cpl_usu VARCHAR(255) NOT NULL COMMENT 'Nome completo do usuário',
+    email_usu VARCHAR(255) NOT NULL UNIQUE COMMENT 'Email do usuário, único',
+    tel_usu VARCHAR(20) COMMENT 'Telefone do usuário',
+    end_rua_usu VARCHAR(255) COMMENT 'Rua do endereço do usuário',
+    end_num_usu INT COMMENT 'Número do endereço do usuário',
+    end_cid_usu VARCHAR(100) COMMENT 'Cidade do endereço do usuário',
+    end_est_usu VARCHAR(50) COMMENT 'Estado do endereço do usuário',
+    end_cep_usu VARCHAR(20) COMMENT 'CEP do endereço do usuário',
+    dat_nas_usu DATE COMMENT 'Data de nascimento do usuário',
+    nom_usu VARCHAR(100) NOT NULL UNIQUE COMMENT 'Nome de usuário, único',
+    sen_usu VARCHAR(255) NOT NULL COMMENT 'Senha do usuário',
+    perg_seg_usu VARCHAR(255) COMMENT 'Pergunta de segurança do usuário',
+    resp_seg_usu VARCHAR(255) COMMENT 'Resposta da pergunta de segurança',
+    tip_usu VARCHAR(50) COMMENT 'Tipo de usuário (ex.: administrador, gerente, atendente)',
+    dat_cri_usu TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'Data de criação do registro, padrão é a data/hora atual',
+    sts_usu VARCHAR(20) DEFAULT 'ativo' COMMENT 'Status do usuário, padrão é "ativo"',
+    fot_prf_usu LONGBLOB COMMENT 'Foto do perfil do usuário',
+    not_adi_usu TEXT COMMENT 'Notas adicionais sobre o usuário'
+);
