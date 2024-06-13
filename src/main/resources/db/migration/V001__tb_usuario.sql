@@ -1,6 +1,7 @@
 CREATE TABLE TB_USUARIO (
     id_usu INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificador único do usuário, chave primária',
     nom_cpl_usu VARCHAR(255) NOT NULL COMMENT 'Nome completo do usuário',
+    cpf_usu VARCHAR(11) NOT NULL COMMENT 'CPF do usuário',
     email_usu VARCHAR(255) NOT NULL UNIQUE COMMENT 'Email do usuário, único',
     tel_usu VARCHAR(20) COMMENT 'Telefone do usuário',
     end_rua_usu VARCHAR(255) COMMENT 'Rua do endereço do usuário',
