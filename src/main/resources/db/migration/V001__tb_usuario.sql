@@ -1,4 +1,4 @@
-CREATE TABLE TB_USER (
+CREATE TABLE tb_user (
     id_usr INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Unique identifier for the user, primary key / Identificador único do usuário, chave primária',
     nam_usr VARCHAR(255) NOT NULL COMMENT 'Full name of the user / Nome completo do usuário',
     cpf_usr VARCHAR(11) NOT NULL COMMENT 'User\'s CPF / CPF do usuário',
