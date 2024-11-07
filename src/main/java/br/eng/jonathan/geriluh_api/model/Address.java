@@ -14,18 +14,14 @@ import lombok.*;
 @NoArgsConstructor
 @Embeddable
 public class Address {
-    @Column(name = "str_add_usr")
+
     private String streetAddress;
 
-    @Column(name = "add_num_usr")
     private Long addressNumber;
 
-    @Column(name = "city_usr")
     private String city;
 
-    @Column(name = "sta_usr")
     private String state;
 
-    @Column(name = "zip_code_usr")
     private String zipCode;
 }

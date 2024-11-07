@@ -14,12 +14,12 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_user")
-public class user {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usr")
-    private Long idUser;
+    private Long userId;
 
     @Column(name = "nam_usr")
     private String name;
