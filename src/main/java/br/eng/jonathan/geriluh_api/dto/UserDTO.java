@@ -1,9 +1,7 @@
 package br.eng.jonathan.geriluh_api.dto;
 
 import br.eng.jonathan.geriluh_api.model.Address;
-import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -13,9 +11,9 @@ import java.time.OffsetDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class userDTO {
+public class UserDTO {
 
-    private Long idUser;
+    private Long userId;
 
     @NotNull(message = "{USER.NAME_NOT_BLANK}")
     @Size(min = 6, max = 255, message = "{USER.NAME_SIZE}")
@@ -35,34 +33,25 @@ public class userDTO {
     @Embedded
     private Address address;
 
-    @Column(name = "birth_date_usr")
     private OffsetDateTime birthDate;
 
-    @Column(name = "user_nam_usr")
+    @NotBlank(message = "{USER.USER_NAME_NOT_BLANK}")
     private String username;
 
-    @Column(name = "pass_usr")
+    @NotBlank(message = "{USER.PASSWORD_NOT_BLANK}")
     private String password;
 
-    @Column(name = "sec_quest_usr")
     private String securityQuestion;
 
-    @Column(name = "sec_answ_usr")
     private String securityAnswer;
 
-    @Column(name = "user_type_usr")
     private String userType;
 
-    @Column(name = "crt_at_dat_usr", updatable = false)
     private OffsetDateTime createdAt;
 
-    @Column(name = "sts_usr")
     private String status;
 
-    @Lob
-    @Column(name = "pro_pic_user")
     private byte[] profilePicture;
 
-    @Column(name = "addit_notes_usr", columnDefinition = "TEXT")
     private String additionalNotes;
 }
