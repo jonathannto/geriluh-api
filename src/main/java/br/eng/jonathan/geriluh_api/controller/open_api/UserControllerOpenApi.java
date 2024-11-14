@@ -27,8 +27,8 @@ public interface UserControllerOpenApi {
     ResponseEntity<Page<EntityModel<UserDTO>>> list(
             @Parameter(hidden = true) Pageable pageable
     );
-//
-//    @Operation(summary = "Get user by ID", description = "Retrieves a single user by their ID")
-//    ResponseEntity<EntityModel<UserDTO>> getUserById(@PathVariable Long userId);
+
+    @Operation(summary = "Get user by ID", description = "Retrieves a single user by their ID")
+    ResponseEntity<EntityModel<UserDTO>> getUserById(@PathVariable Long userId);
 
 }

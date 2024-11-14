@@ -3,7 +3,6 @@ package br.eng.jonathan.geriluh_api.controller;
 import br.eng.jonathan.geriluh_api.controller.open_api.UserControllerOpenApi;
 import br.eng.jonathan.geriluh_api.dto.UserDTO;
 import br.eng.jonathan.geriluh_api.dto.assembler.UserDTOAssembler;
-import br.eng.jonathan.geriluh_api.model.User;
 import br.eng.jonathan.geriluh_api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,5 +29,14 @@ public class UserController implements UserControllerOpenApi {
                 .map(user -> assembler.mapToEntityModelDTO(user));
 
         return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<EntityModel<UserDTO>> getUserById(Long userId) {
+
+        var user = service.findUserById(userId);
+
+        return ResponseEntity.ok()
+                .body(assembler.mapToEntityModelDTO(user));
     }
 }
