@@ -2,7 +2,7 @@ package br.eng.jonathan.geriluh_api.dto.assembler;
 
 import br.eng.jonathan.geriluh_api.controller.UserController;
 import br.eng.jonathan.geriluh_api.dto.UserDTO;
-import br.eng.jonathan.geriluh_api.exception.NotFoundException;
+import br.eng.jonathan.geriluh_api.exception_handler.exceptions.NotFoundException;
 import br.eng.jonathan.geriluh_api.model.Address;
 import br.eng.jonathan.geriluh_api.model.User;
 import br.eng.jonathan.geriluh_api.service.UserService;

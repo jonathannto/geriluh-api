@@ -1,6 +1,6 @@
 package br.eng.jonathan.geriluh_api.service;
 
-import br.eng.jonathan.geriluh_api.exception.NotFoundException;
+import br.eng.jonathan.geriluh_api.exception_handler.exceptions.NotFoundException;
 import br.eng.jonathan.geriluh_api.model.User;
 import br.eng.jonathan.geriluh_api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private static final String USER_FIND_USER_ERRO = "USER.SEARCH_USER_ERROR";
+
     @Autowired
     private MessageSource messageSource;
 
@@ -25,11 +26,11 @@ public class UserService {
     }
 
     public User findUserById(Long userId) throws NotFoundException {
-        return repository.findById(userId).orElseThrow(() -> new NotFoundException(getMessageErro(USER_FIND_USER_ERRO)));
+        return repository.findById(userId).orElseThrow(() -> new NotFoundException(getMessageErro()));
     }
 
 
-    private String getMessageErro(String mensagem) {
-        return messageSource.getMessage(mensagem, null, LocaleContextHolder.getLocale());
+    private String getMessageErro() {
+        return messageSource.getMessage(UserService.USER_FIND_USER_ERRO, null, LocaleContextHolder.getLocale());
     }
 }
