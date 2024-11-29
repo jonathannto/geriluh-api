@@ -1,15 +1,18 @@
 package br.eng.jonathan.geriluh_api.controller.open_api;
 
 import br.eng.jonathan.geriluh_api.dto.UserDTO;
+import br.eng.jonathan.geriluh_api.exception_handler.exceptions.NotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import static br.eng.jonathan.geriluh_api.utils.APIConstants.PAGE_NUMBER;
 import static br.eng.jonathan.geriluh_api.utils.APIConstants.PAGE_SIZE;
@@ -30,5 +33,9 @@ public interface UserControllerOpenApi {
 
     @Operation(summary = "Get user by ID", description = "Retrieves a single user by their ID")
     ResponseEntity<EntityModel<UserDTO>> getUserById(@PathVariable Long userId);
+
+    @Operation(summary = "New user", description = "Registers a new user.")
+    ResponseEntity<EntityModel<UserDTO>> createNewUser(@RequestBody UserDTO userDTO, HttpServletResponse response) throws NotFoundException;
+
 
 }
