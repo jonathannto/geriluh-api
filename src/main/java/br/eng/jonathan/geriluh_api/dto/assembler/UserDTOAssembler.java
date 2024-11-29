@@ -87,11 +87,11 @@ public class UserDTOAssembler {
                 linkTo(methodOn(UserController.class)
                         .list(null))
                         .withRel("list")
-                        .withType("GET")
-//                linkTo(methodOn(OperationalFactController.class)
-//                        .createOperationalFact(null, null))
-//                        .withRel("create")
-//                        .withType("POST"),
+                        .withType("GET"),
+                linkTo(methodOn(UserController.class)
+                        .createNewUser(null, null))
+                        .withRel("create")
+                        .withType("POST")
 //                linkTo(methodOn(OperationalFactController.class)
 //                        .updateOperationalFact(operationalFact.getOperationalFactId(), null))
 //                        .withRel("update")

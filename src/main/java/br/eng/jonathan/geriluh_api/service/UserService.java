@@ -29,6 +29,9 @@ public class UserService {
         return repository.findById(userId).orElseThrow(() -> new NotFoundException(getMessageErro()));
     }
 
+    public User createUser(User user) throws NotFoundException {
+        return repository.save(user);
+    }
 
     private String getMessageErro() {
         return messageSource.getMessage(UserService.USER_FIND_USER_ERRO, null, LocaleContextHolder.getLocale());
