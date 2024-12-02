@@ -1,5 +1,6 @@
 package br.eng.jonathan.geriluh_api.service;
 
+import br.eng.jonathan.geriluh_api.dto.UserDTO;
 import br.eng.jonathan.geriluh_api.exception_handler.exceptions.NotFoundException;
 import br.eng.jonathan.geriluh_api.model.User;
 import br.eng.jonathan.geriluh_api.repository.UserRepository;
@@ -9,6 +10,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.BeanUtils;
 
 @Service
 public class UserService {
@@ -31,6 +33,22 @@ public class UserService {
 
     public User createUser(User user) throws NotFoundException {
         return repository.save(user);
+    }
+
+    public User updateUser(Long userId, UserDTO userDTO)  {
+
+        User user = repository.findById(userId).orElseThrow(() -> new NotFoundException(getMessageErro()));
+
+        BeanUtils.copyProperties(userDTO, user, "userId");
+
+        return repository.save(user);
+    }
+
+    public void deleteUser(Long userId) {
+        if(!repository.existsById(userId)) {
+            throw new NotFoundException(getMessageErro());
+        }
+        repository.deleteById(userId);
     }
 
     private String getMessageErro() {

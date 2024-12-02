@@ -91,15 +91,15 @@ public class UserDTOAssembler {
                 linkTo(methodOn(UserController.class)
                         .createNewUser(null, null))
                         .withRel("create")
-                        .withType("POST")
-//                linkTo(methodOn(OperationalFactController.class)
-//                        .updateOperationalFact(operationalFact.getOperationalFactId(), null))
-//                        .withRel("update")
-//                        .withType("PUT"),
-//                linkTo(methodOn(OperationalFactController.class)
-//                        .deleteOperationalFact(operationalFact.getOperationalFactId()))
-//                        .withRel("delete")
-//                        .withType("DELETE")
+                        .withType("POST"),
+                linkTo(methodOn(UserController.class)
+                        .updateUser(user.getUserId(), null))
+                        .withRel("update")
+                        .withType("PUT"),
+                linkTo(methodOn(UserController.class)
+                        .deleteUser(user.getUserId()))
+                        .withRel("delete")
+                        .withType("DELETE")
         );
     }
 

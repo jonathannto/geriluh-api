@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
@@ -37,5 +38,10 @@ public interface UserControllerOpenApi {
     @Operation(summary = "New user", description = "Registers a new user.")
     ResponseEntity<EntityModel<UserDTO>> createNewUser(@RequestBody UserDTO userDTO, HttpServletResponse response) throws NotFoundException;
 
+    @Operation(summary = "Updates a user", description = "Updates a user using their user ID")
+    ResponseEntity<EntityModel<UserDTO>> updateUser(@PathVariable Long idUser, @Valid @RequestBody UserDTO userDTO);
+
+    @Operation(summary = "Deletes a user", description = "Deletes a user using their user ID")
+    ResponseEntity<Void> deleteUser(@PathVariable Long userId);
 
 }
