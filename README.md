@@ -7,6 +7,8 @@ This GitHub repository contains the source code for Geriluh's API, a comprehensi
 
 Geriluh stands for "Gerenciamento de Pequenas Empresas Lu Caseirinho" (Portuguese for "Lu Caseirinho Small Business Management"). It is a micro-ERP, a lightweight and focused alternative to traditional, complex enterprise resource planning systems.
 
+![alt text](image.png)
+
 ## Key Features:
 
 Geriluh offers a powerful suite of features to manage various aspects of your business, including:
