@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.0</version>
+		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.eng.jonathan</groupId>
 	<artifactId>geriluh-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2025.0.0-SNAPSHOT</version>
 	<name>geriluh-api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>APIs for lucaseirinho.com.br</description>
 	<properties>
 		<java.version>19</java.version>
 		<maven.compiler.source>19</maven.compiler.source>
