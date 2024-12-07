@@ -1,11 +1,7 @@
 package br.eng.jonathan.geriluh_api.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.math.BigDecimal;
@@ -17,6 +13,7 @@ import java.time.OffsetDateTime;
 @EqualsAndHashCode
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tb_cash_register")
 public class CashRegister {
