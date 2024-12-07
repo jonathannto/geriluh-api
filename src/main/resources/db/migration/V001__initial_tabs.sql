@@ -123,7 +123,7 @@ ENGINE = InnoDB;
 -- Table `geriluhbd`.`tb_dish`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS $$$raw_schema$$$.`tb_dish` (
-  `id_dsh` INT NOT NULL COMMENT 'Unique identifier for the dish / Identificador único do lanche',
+  `id_dsh` INT NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier for the dish / Identificador único do lanche',
   `dish_nam_dsh` VARCHAR(255) NOT NULL COMMENT ' Name of the dish / Nome do lanche',
   `dish_prc_dsh` DECIMAL(10,2) NOT NULL COMMENT ' Price of the dish / Preço do lanche',
   `desc_dsh` TEXT NOT NULL COMMENT ' Description of the dish / Descrição do lanche',
