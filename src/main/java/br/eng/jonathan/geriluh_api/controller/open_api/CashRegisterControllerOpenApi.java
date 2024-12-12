@@ -1,7 +1,6 @@
 package br.eng.jonathan.geriluh_api.controller.open_api;
 
 import br.eng.jonathan.geriluh_api.dto.CashRegisterDTO;
-import br.eng.jonathan.geriluh_api.dto.UserDTO;
 import br.eng.jonathan.geriluh_api.exception_handler.exceptions.NotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
