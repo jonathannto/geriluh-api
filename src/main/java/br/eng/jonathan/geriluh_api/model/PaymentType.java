@@ -26,6 +26,4 @@ public class PaymentType {
     @Column(name = "desc_pay_tp", length = 45)
     private String description;
 
-    @Column(name = "total_pay_tp", nullable = false, precision = 10, scale = 2)
-    private BigDecimal total;
 }

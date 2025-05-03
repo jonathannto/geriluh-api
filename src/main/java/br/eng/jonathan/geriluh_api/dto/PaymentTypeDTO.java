@@ -20,8 +20,4 @@ public class PaymentTypeDTO {
     @Size(max = 45, message = "{PAYMENT_TYPE.DESCRIPTION_SIZE}")
     private String description;
 
-    @NotNull(message = "{PAYMENT_TYPE.TOTAL_NOT_NULL}")
-    @DecimalMin(value = "0.00", message = "{PAYMENT_TYPE.TOTAL_MIN}")
-    @Digits(integer = 10, fraction = 2, message = "{PAYMENT_TYPE.TOTAL_DIGITS}")
-    private BigDecimal total;
 }

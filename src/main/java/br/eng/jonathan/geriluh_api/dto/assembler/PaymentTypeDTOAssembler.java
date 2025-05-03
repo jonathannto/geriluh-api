@@ -33,7 +33,6 @@ public class PaymentTypeDTOAssembler {
             paymentType.setPaymentTypeId(previousPaymentType.getPaymentTypeId());
             paymentType.setName(paymentTypeDTO.getName() != null ? paymentTypeDTO.getName() : previousPaymentType.getName());
             paymentType.setDescription(paymentTypeDTO.getDescription() != null ? paymentTypeDTO.getDescription() : previousPaymentType.getDescription());
-            paymentType.setTotal(paymentTypeDTO.getTotal() != null ? paymentTypeDTO.getTotal() : previousPaymentType.getTotal());
         }
 
         return paymentType;
