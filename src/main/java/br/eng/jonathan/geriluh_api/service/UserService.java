@@ -40,7 +40,6 @@ public class UserService {
         User user = repository.findById(userId).orElseThrow(() -> new NotFoundException(getMessageErro()));
 
         BeanUtils.copyProperties(userDTO, user, "userId");
-
         return repository.save(user);
     }
 
