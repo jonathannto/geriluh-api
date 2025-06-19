@@ -32,7 +32,7 @@ Geriluh is built using modern and reliable technologies, ensuring high performan
 
 **Programming Language:** Java
 **Web Framework:** Spring Ecosystem (Boot, DataJpa, Security)
-**Database:** MySQL
+**Database:** Postgresql
 **Migrations:** Flyway
 **Docs:** Swagger
 **Server:** Heroku
