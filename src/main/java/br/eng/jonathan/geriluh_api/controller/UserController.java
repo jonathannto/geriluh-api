@@ -49,10 +49,10 @@ public class UserController implements UserControllerOpenApi {
         return new ResponseEntity<EntityModel<UserDTO>>(assembler.mapToEntityModelDTO(user), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{idUser}")
-    public ResponseEntity<EntityModel<UserDTO>> updateUser(@PathVariable Long idUser, @Valid @RequestBody UserDTO userDTO) {
+    @PutMapping("/{userId}")
+    public ResponseEntity<EntityModel<UserDTO>> updateUser(@PathVariable Long userId, @Valid @RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(assembler.mapToEntityModelDTO(
-                service.updateUser(idUser, userDTO)));
+                service.updateUser(userId, userDTO)));
     }
 
     @DeleteMapping("/{userId}")

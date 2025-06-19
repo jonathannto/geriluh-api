@@ -60,8 +60,7 @@ public class User {
     @Column(name = "sts_usr")
     private String status;
 
-    @Lob
-    @Column(name = "pro_pic_user")
+    @Column(name = "pro_pic_user", columnDefinition = "bytea")
     private byte[] profilePicture;
 
     @Column(name = "addit_notes_usr", columnDefinition = "TEXT")

@@ -33,7 +33,6 @@ public class Dish {
     @Column(name = "has_add_dsh", nullable = true, length = 1)
     private Character hasAdditionalOptions;
 
-    @Lob
-    @Column(name = "pic_dsh", nullable = true)
+    @Column(name = "pic_dsh", columnDefinition = "bytea")
     private byte[] picture;
 }

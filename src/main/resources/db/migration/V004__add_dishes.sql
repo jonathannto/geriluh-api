@@ -1,11 +1,12 @@
 -- -----------------------------------------------------
--- Table `geriluhbd`.`tb_dish`
+-- Table geriluhbd.tb_dish
 -- Insert all dishes of the menu
 -- Author: Jonathan Nascimento
 -- Date: 2024-12-07
 -- -----------------------------------------------------
 
-INSERT INTO `tb_dish` (`dish_nam_dsh`, `dish_prc_dsh`, `desc_dsh`, `cat_dsh`, `has_add_dsh`, `pic_dsh`) VALUES
+-- Inserção de pratos na tabela tb_dish
+INSERT INTO tb_dish (dish_nam_dsh, dish_prc_dsh, desc_dsh, cat_dsh, has_add_dsh, pic_dsh) VALUES
 -- Cuscuz
 ('Só Cuscuz', 4.00, 'Simples porção de cuscuz', 'Cuscuz', 'n', NULL),
 ('Cuscuz com manteiga', 5.00, 'Cuscuz acompanhado de manteiga', 'Cuscuz', 'n', NULL),
