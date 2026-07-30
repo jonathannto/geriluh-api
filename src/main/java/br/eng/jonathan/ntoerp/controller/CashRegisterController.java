@@ -2,8 +2,11 @@ package br.eng.jonathan.ntoerp.controller;
 
 import br.eng.jonathan.ntoerp.controller.open_api.CashRegisterControllerOpenApi;
 import br.eng.jonathan.ntoerp.dto.CashRegisterDTO;
+import br.eng.jonathan.ntoerp.dto.CashRegisterInDTO;
+import br.eng.jonathan.ntoerp.dto.CashRegisterOutDTO;
 import br.eng.jonathan.ntoerp.dto.assembler.CashRegisterDTOAssembler;
 import br.eng.jonathan.ntoerp.exception_handler.exceptions.NotFoundException;
+import br.eng.jonathan.ntoerp.model.CashRegister;
 import br.eng.jonathan.ntoerp.service.CashRegisterService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -14,6 +17,8 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping(value = "/v1/cashes-registers", produces = "application/json")
@@ -45,6 +50,23 @@ public class CashRegisterController implements CashRegisterControllerOpenApi {
         var cashRegister = service.createCashRegister(assembler.mapToEntity(cashRegisterDTO));
 
         return new ResponseEntity<EntityModel<CashRegisterDTO>>(assembler.toModel(cashRegister), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/open")
+    public ResponseEntity<EntityModel<CashRegisterOutDTO>> openCashRegister(
+            @Valid @RequestBody CashRegisterInDTO inDto) {
+
+        CashRegister savedCashRegister = service.openCashRegister(inDto);
+        return new ResponseEntity<>(assembler.toOpenModel(savedCashRegister), HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/{cashRegisterId}/close")
+    public ResponseEntity<EntityModel<CashRegisterDTO>> closeCashRegister(
+            @PathVariable Long cashRegisterId,
+            @RequestParam BigDecimal endBalance,
+            @RequestParam(required = false) String notes) {
+        var cashRegister = service.closeCashRegister(cashRegisterId, endBalance, notes);
+        return ResponseEntity.ok(assembler.toModel(cashRegister));
     }
 
     @PutMapping("/{idCashRegister}")

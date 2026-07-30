@@ -2,6 +2,7 @@ package br.eng.jonathan.ntoerp.dto.assembler;
 
 import br.eng.jonathan.ntoerp.controller.CashRegisterController;
 import br.eng.jonathan.ntoerp.dto.CashRegisterDTO;
+import br.eng.jonathan.ntoerp.dto.CashRegisterOutDTO;
 import br.eng.jonathan.ntoerp.dto.mapper.CashRegisterMapper;
 import br.eng.jonathan.ntoerp.model.CashRegister;
 import br.eng.jonathan.ntoerp.service.CashRegisterService;
@@ -61,6 +62,25 @@ public class CashRegisterDTOAssembler implements RepresentationModelAssembler<Ca
                         .deleteCashRegister(cashRegister.getCashRegisterId()))
                         .withRel("delete")
                         .withType("DELETE")
+        );
+    }
+
+    public EntityModel<CashRegisterOutDTO> toOpenModel(CashRegister cashRegister) {
+        CashRegisterOutDTO outDto = cashRegisterMapper.toOpenOutDto(cashRegister);
+
+        return EntityModel.of(outDto,
+                linkTo(methodOn(CashRegisterController.class)
+                        .getCashRegisterById(cashRegister.getCashRegisterId()))
+                        .withSelfRel()
+                        .withType("GET"),
+                linkTo(methodOn(CashRegisterController.class)
+                        .list(null))
+                        .withRel("list")
+                        .withType("GET"),
+                linkTo(methodOn(CashRegisterController.class)
+                        .closeCashRegister(cashRegister.getCashRegisterId(), null, null))
+                        .withRel("close")
+                        .withType("PATCH")
         );
     }
 }

@@ -1,5 +1,6 @@
 package br.eng.jonathan.ntoerp.exception_handler;
 
+import br.eng.jonathan.ntoerp.exception_handler.exceptions.BusinessException;
 import br.eng.jonathan.ntoerp.exception_handler.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -41,5 +43,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 		return handleExceptionInternal(ex, exceptionResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
+
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<Object> handleBusinessException(BusinessException ex, WebRequest request) {
+
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                OffsetDateTime.now(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                List.of(ex.getMessage()),
+                request.getDescription(false));
+
+        return handleExceptionInternal(ex, exceptionResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
 
 }
