@@ -22,7 +22,9 @@ import java.time.OffsetDateTime;
 @RequiredArgsConstructor
 public class CashRegisterService {
 
-    private static final String CASH_REGISTER_SEARCH_ERRO = "CASH_REGISTER.SEARCH_ERROR";
+    private static final String MSG_SEARCH_ERROR = "CASH_REGISTER.SEARCH_ERROR";
+    private static final String MSG_USER_HAS_ACTIVE_REGISTER = "CASH_REGISTER.USER_HAS_ACTIVE_REGISTER";
+    private static final String MSG_ALREADY_CLOSED = "CASH_REGISTER.ALREADY_CLOSED";
 
     private final MessageSource messageSource;
     private final CashRegisterMapper cashRegisterMapper;
@@ -33,7 +35,7 @@ public class CashRegisterService {
     }
 
     public CashRegister findCashRegisterById(Long userId) throws NotFoundException {
-        return repository.findById(userId).orElseThrow(() -> new NotFoundException(getMessageErro()));
+        return repository.findById(userId).orElseThrow(() -> new NotFoundException(getMessage(MSG_SEARCH_ERROR)));
     }
 
     public CashRegister createCashRegister(CashRegister cashRegister) {
@@ -55,7 +57,7 @@ public class CashRegisterService {
                 .existsByUserUserIdAndStatusIgnoreCase(inDto.getUserId(), "open");
 
         if (hasOpenRegister) {
-            throw new BusinessException("User already has an open cash register.");
+            throw new BusinessException(getMessage(MSG_USER_HAS_ACTIVE_REGISTER));
         }
 
         CashRegister entity = cashRegisterMapper.toEntity(inDto);
@@ -72,10 +74,10 @@ public class CashRegisterService {
     @Transactional
     public CashRegister closeCashRegister(Long cashRegisterId, BigDecimal endBalance, String notes) {
         CashRegister cashRegister = repository.findById(cashRegisterId)
-                .orElseThrow(() -> new NotFoundException("Cash register not found with ID: " + cashRegisterId));
+                .orElseThrow(() -> new NotFoundException(getMessage(MSG_SEARCH_ERROR)));
 
         if ("closed".equalsIgnoreCase(cashRegister.getStatus())) {
-            throw new BusinessException("Cash register is already closed.");
+            throw new BusinessException(getMessage(MSG_ALREADY_CLOSED));
         }
 
         cashRegister.setEndDate(OffsetDateTime.now());
@@ -91,13 +93,13 @@ public class CashRegisterService {
 
     public void deleteCashRegister(Long cashRegisterId) {
         if (!repository.existsById(cashRegisterId)) {
-            throw new NotFoundException("CashRegister not found");
+            throw new NotFoundException(getMessage(MSG_SEARCH_ERROR));
         }
         repository.deleteById(cashRegisterId);
     }
 
-    private String getMessageErro() {
-        return messageSource.getMessage(CashRegisterService.CASH_REGISTER_SEARCH_ERRO, null, LocaleContextHolder.getLocale());
+    private String getMessage(String code, Object... args) {
+        return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
     }
 
 }
